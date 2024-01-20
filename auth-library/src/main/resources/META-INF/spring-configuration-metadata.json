@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "spring.security.oauth2.jwt.resource-identifier",
+      "type": "java.lang.String",
+      "description": "The identifier used to extract roles from the Keycloak access token's resource access map"
+    },
+    {
+      "name": "spring.security.oauth2.client.client-identifier",
+      "type": "java.lang.String",
+      "description": "The identifier of the Spring OAuth2 client to use credentials for"
+
+  ]
+}

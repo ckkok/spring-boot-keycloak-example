@@ -1,0 +1,16 @@
+server:
+  port: 9191
+
+spring:
+  security:
+    oauth2:
+      client:
+        client-identifier: test-client
+        registration:
+          test-client:
+            client-id: test-client
+            client-secret: k76k4O0ft4lPq7OQ6ZwbZPOW6qG5xOvV
+            authorization-grant-type: client_credentials
+        provider:
+          test-client:
+            token-uri: http://localhost:8080/realms/master/protocol/openid-connect/token
