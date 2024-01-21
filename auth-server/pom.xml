@@ -12,9 +12,6 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<name>auth-client</name>
 	<description>Authentication Server Demo</description>
-  <properties>
-    <keycloak.version>23.0.4</keycloak.version>
-  </properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.example</groupId>
