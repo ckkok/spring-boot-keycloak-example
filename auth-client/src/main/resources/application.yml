@@ -2,15 +2,18 @@ server:
   port: 9191
 
 spring:
+  threads:
+    virtual:
+      enabled: true
   security:
     oauth2:
       client:
-        client-identifier: test-client
+        client-identifier: oauth2-client
         registration:
-          test-client:
+          oauth2-client:
             client-id: test-client
             client-secret: k76k4O0ft4lPq7OQ6ZwbZPOW6qG5xOvV
             authorization-grant-type: client_credentials
         provider:
-          test-client:
+          oauth2-client:
             token-uri: http://localhost:8080/realms/master/protocol/openid-connect/token

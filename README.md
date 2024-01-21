@@ -7,7 +7,7 @@ This repository demonstrates a minimal configuration for bootstrapping OAuth2 Re
 
 As default behaviour, Spring Security validates the `iss`, `exp` and `nbf` claims. When the `spring.security.oauth2.resourceserver.jwt.audiences` property is configured, the `aud` claim is also validated against it.
 
-By further making use of Spring Boot's AutoConfiguration infrastructure, these configurations become opt-out the moment the auth-library module is on the classpath, rather than requiring Import annotations. As examples, the client can be seen to exclude the resource server autoconfiguration (and vice versa).
+wy further making use of Spring Boot's AutoConfiguration infrastructure, these configurations become opt-out the moment the auth-library module is on the classpath, rather than requiring Import annotations. As examples, the client can be seen to exclude the resource server autoconfiguration (and vice versa).
 
 ## Running the Example
 
@@ -22,6 +22,10 @@ Observe the respective client and server configuration logs indicating that the 
 Go to `http://localhost:9190/api` in your browser. This is the secured resource server and you should see a 401 Unauthorized response.
 
 Instead, go to `http://localhost:9191/api` and observe the client requesting and validating the access token from Keycloak before calling the resource server and forwarding its response.
+
+Shut down Keycloak and re-issue the request immediately. If the token is still valid, determined by its exp value, no further token validation request is made to Keycloak and the request succeeds. If token introspection is required, Spring Security can be configured to validate the tokens as opaque tokens, sending them to an introspection endpoint automatically.
+
+Re-issue the request after the token expires - check via jwt.io, the default clock skew is 60 seconds, i.e. a token that expires in the next 60 seconds is considered expired. Observe that if Keycloak is unavailable, the request will fail.
 
 ## References
 - [Spring Security Documentation on Resource Server Configuration](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html#_specifying_the_authorization_server)
