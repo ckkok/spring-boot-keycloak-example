@@ -29,7 +29,7 @@ Re-issue the request after the token expires - check via jwt.io, the default clo
 
 ## Things to Address Before Bringing to Production
 
-- Failure to obtain an access token from Keycloak for any reason will throw an OAuth2-related exception. This should be wrapped in a relevant exception that applications can handle, perhaps via retries. For example, Spring's HttpClientException.
+- Failure to obtain an access token from Keycloak for any reason will throw an org.springframework.security.oauth2.client.ClientAuthorizationException. This should be wrapped in a relevant exception that applications can handle, perhaps via retries. For example, Spring's HttpClientException.
 - Appropriate exception translation policies on the secured server
 
 ## References
